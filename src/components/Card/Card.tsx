@@ -28,7 +28,7 @@ const Card:FC<Props> = ({title,children}:Props) => {
     const state=useAppSelector(state=>state.counter.value)
     const dispatch=useAppDispatch()
 
-    dispatch(actions.decrement(2))
+    dispatch({type:'DECREMENT',payload:2})
 
 
     const click=()=>{

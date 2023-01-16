@@ -1,11 +1,17 @@
-import {reducer} from './reducer'
+import {reducer, red, ActionType} from './reducer'
 import {TypedUseSelectorHook,useDispatch,useSelector} from 'react-redux'
-import {configureStore} from '@reduxjs/toolkit'
+import {Action, configureStore} from '@reduxjs/toolkit';
 
+type State={
+    counter:{
+        value:number;
+    };
 
-const store=configureStore({
+}
+
+const store=configureStore<State,ActionType>({
     reducer:{
-        counter:reducer
+        counter:red
     },
 });
 
@@ -13,7 +19,4 @@ const store=configureStore({
 
 export type RootState=ReturnType<typeof store.getState>
 export type RootDispatch=typeof store.dispatch;
-
-//castoms Hooks
-
 
