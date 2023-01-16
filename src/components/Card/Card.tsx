@@ -1,5 +1,9 @@
 import React, {PropsWithChildren, ReactNode, FC, useState, useRef, ChangeEventHandler, ChangeEvent} from 'react';
 import Link from "../Link/Link";
+import {useDispatch, useSelector} from "react-redux";
+import {actions} from "../../redux/reducer";
+import useAppSelector from "../../hooks/useAppSelector";
+import useAppDispatch from "../../hooks/useAppDispatch";
 
 type Props={
     title?:'title card'|'card title';
@@ -21,6 +25,11 @@ const Card:FC<Props> = ({title,children}:Props) => {
     const [link, setLink] = useState<TabKeys>(TabKeys.tab1);
     const [valueInput, setValueInput] = useState('');
     const ref = useRef<HTMLDivElement>(null);
+    const state=useAppSelector(state=>state.counter.value)
+    const dispatch=useAppDispatch()
+
+    dispatch(actions.decrement(2))
+
 
     const click=()=>{
         console.log( ref.current?.ATTRIBUTE_NODE)
@@ -36,9 +45,6 @@ const Card:FC<Props> = ({title,children}:Props) => {
     }
 
 
-    const string1:string='lol'
-    let my:string|number='asas'
-    my=111
 
 
 
